@@ -1,8 +1,5 @@
-import streamlit as st
 import cv2
 import numpy as np
-import tkinter as tk
-from tkinter import filedialog
 
 # Load Haar Cascade untuk deteksi helm
 helmet_cascade = cv2.CascadeClassifier('C:\\Users\\ACER\\Downloads\\Haarcascade helmet\\haarcascade_helmet (1).xml')
@@ -54,20 +51,8 @@ def detect_helmet_bottom_extended(img_path, vertical_padding=50, horizontal_padd
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
-# Fungsi untuk mengunggah gambar dan menjalankan deteksi
-def upload_and_detect():
-    # Membuat jendela root Tkinter
-    root = tk.Tk()
-    root.withdraw()  # Menyembunyikan jendela root
+# Ganti jalur gambar di sini
+img_path = 'C:\\Users\\ACER\\Downloads\\Haarcascade helmet\\poto helm yang kece-20241031T034456Z-001\\poto helm yang kece\\Pakai Helm0.jpg'  # Ganti dengan jalur gambar Anda
 
-    # Membuka dialog file untuk memilih gambar
-    img_path = filedialog.askopenfilename(title='Pilih Gambar', filetypes=[('Image Files', '.jpg;.jpeg;.png;.bmp')])
-
-    if img_path:  # Jika pengguna memilih file
-        # Menjalankan deteksi helm dengan tepi bawah yang diperpanjang
-        detect_helmet_bottom_extended(img_path, vertical_padding=20, horizontal_padding=80, extra_padding=30)
-    else:
-        print("Tidak ada file yang dipilih.")
-
-# Memanggil fungsi untuk mengunggah dan mendeteksi
-upload_and_detect()
+# Menjalankan deteksi helm
+detect_helmet_bottom_extended(img_path, vertical_padding=20, horizontal_padding=80, extra_padding=30)
